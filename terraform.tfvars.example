@@ -1,0 +1,14 @@
+# Copy to terraform.tfvars OR (preferred) pass via TF_VAR_* env so nothing
+# sensitive is written to disk. This file documents the shape only.
+#
+#   export TF_VAR_org_id=...
+#   export TF_VAR_tf_provisioner_client_id=...
+#   export TF_VAR_tf_provisioner_client_secret=...
+
+org_id = "your-infisical-org-id"
+
+# Prefer env vars for these two (they are secrets):
+# tf_provisioner_client_id     = "..."
+# tf_provisioner_client_secret = "..."
+
+# infisical_host = "https://app.infisical.com"   # or your self-hosted URL
