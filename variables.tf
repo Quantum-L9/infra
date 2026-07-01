@@ -23,3 +23,9 @@ variable "extra_tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "repository_name" {
+  description = "Repository name recorded in the default tags."
+  type        = string
+  default     = "Quantum-L9/infra"
+}

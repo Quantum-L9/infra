@@ -13,6 +13,8 @@ module "infra_metadata" {
   extra_tags = {
     Team = "platform"
   }
+
+  repository_name = "Quantum-L9/infra"
 }
 ```
 

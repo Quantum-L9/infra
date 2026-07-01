@@ -5,6 +5,6 @@ locals {
     Name        = local.name
     Environment = local.environment
     ManagedBy   = "Terraform"
-    Repository  = "Quantum-L9/infra"
+    Repository  = var.repository_name
   }, var.extra_tags)
 }
