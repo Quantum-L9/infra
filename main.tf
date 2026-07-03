@@ -1,3 +1,15 @@
+# Metadata module: normalizes stack name, environment, and tags for downstream use.
+locals {
+  name        = lower(replace(trimspace(var.name), " ", "-"))
+  environment = lower(trimspace(var.environment))
+  tags = merge({
+    Name        = local.name
+    Environment = local.environment
+    ManagedBy   = "Terraform"
+    Repository  = var.repository_name
+  }, var.extra_tags)
+}
+
 # Fan the service registry out over the reusable module: one project + identity +
 # read-only binding (+ optional shared-secret import) per entry.
 module "service" {

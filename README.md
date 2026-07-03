@@ -70,3 +70,26 @@ Delivers the 3 bootstrap vars (`INFISICAL_CLIENT_ID`, `INFISICAL_CLIENT_SECRET`,
   in-process, one `await loadSecrets()` before config.
 - **CI / serverless / non-Node** (e.g. Website-Bot Actions): `infisical run -- <cmd>`.
 Both use the same identity + the 3 bootstrap vars.
+
+## Reusable metadata module
+
+This root module also exposes a reusable Terraform module for normalizing infrastructure
+stack metadata (tags, names, environments).
+
+```hcl
+module "infra_metadata" {
+  source = "github.com/Quantum-L9/infra"
+
+  name        = "api"
+  environment = "production"
+  extra_tags = {
+    Team = "platform"
+  }
+}
+```
+
+### Outputs
+
+- `name`: normalized stack name
+- `environment`: normalized deployment environment
+- `tags`: merged default and custom tags
