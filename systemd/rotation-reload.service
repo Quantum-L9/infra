@@ -21,7 +21,7 @@
 #   systemctl enable --now rotation-reload.timer
 
 [Unit]
-Description=Infisical rotation reload for %I
+Description=Infisical rotation reload (%n)
 After=network-online.target
 Wants=network-online.target
 
@@ -34,6 +34,3 @@ ExecStart=/usr/local/bin/infra-rotation-reload.sh
 
 # Do not kill the target service on script failure — fail safe
 SuccessExitStatus=0 1
-
-[Install]
-WantedBy=multi-user.target

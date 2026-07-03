@@ -76,8 +76,9 @@ NEW_SECRET="$(curl -fsS -X POST \
 
 # ── Step 5: Write new EnvironmentFile (chmod 600, atomic write) ───────────────
 log "Writing new EnvironmentFile to $ROTATION_ENV_FILE..."
-TMP_FILE="$(mktemp)"
 umask 077
+TMP_FILE="$(mktemp)"
+trap 'rm -f "$TMP_FILE"' EXIT
 cat > "$TMP_FILE" << ENVEOF
 INFISICAL_CLIENT_ID=$CLIENT_ID
 INFISICAL_CLIENT_SECRET=$NEW_SECRET
